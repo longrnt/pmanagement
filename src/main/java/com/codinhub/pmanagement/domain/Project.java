@@ -6,6 +6,7 @@ import org.omg.PortableInterceptor.ServerRequestInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -19,6 +20,8 @@ public class Project {
     private String projectName;
 
     @NotBlank(message = "Project identifier is required")
+    @Size(min=4, max=5, message="Please use 4 to 5 characters")
+    @Column(updatable = false, unique = true)
     private String projectIdentifier;
 
     @NotBlank(message = "Project description is required")
